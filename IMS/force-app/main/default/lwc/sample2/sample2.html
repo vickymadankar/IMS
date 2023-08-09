@@ -1,0 +1,14 @@
+<template>
+    <input type="file" onchange={handleFileChange} accept="image/*">
+    <div class="imagePreview" if:true={imageData}>
+        <img src={imageData} alt="Selected Image">
+    </div>
+    <lightning-button label="Parse Image" onclick={handleImageParsing} ></lightning-button>
+    <div class="textOverlay" if:true={parsedText}>
+        <ul>
+            <template for:each={parsedText} for:item="line">
+                <li key={line.lineIndex}>{line.text}</li>
+            </template>
+        </ul>
+    </div>
+</template>

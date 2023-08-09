@@ -1,0 +1,24 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+        </div>
+        <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+        <a href="#" class="slds-card__header-link slds-truncate" title="New Invoice">
+        <span><strong>New Invoice</strong></span>
+        </a>
+        </h2>
+        </div>
+        <div class="slds-no-flex">
+        <lightning-button label="Go To CompanyPage" onclick={navigateToAccountListView}> </lightning-button>
+        </div>
+        </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner" >
+        You can only create an Invoice from Company Detail Page <br>
+        Click <a href="https://vickymadakar-dev-ed.lightning.force.com/lightning/o/Account/list?filterName=Recent">here </a> go to company page 
+        </div>
+        </article>
+</template>

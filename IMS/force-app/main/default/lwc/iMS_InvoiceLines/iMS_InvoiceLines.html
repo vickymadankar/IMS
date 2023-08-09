@@ -1,0 +1,81 @@
+<template>
+
+  <div class="slds-card" style="font-family: 'Open Sans', sans-serif">
+    <!-- Header -->
+    <header class="slds-card__header slds-media slds-media_center">
+     <div class="slds-media__figure">
+        <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+      </div>
+      <div class="slds-media__body slds-card__header-title slds-text-title_bold" style="font-size: 14px">
+        Invoice Lines
+      </div>
+    </header>
+      <!-- Table -->
+  
+      <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" role="grid">
+        <thead>
+          <tr>
+  
+            <th scope="col" height="22">Invoice</th>
+            <th scope="col" height="22">Description</th>
+            <th scope="col" height="22">Quantity</th>
+            <th scope="col" height="22">Unit Amount</th>
+            <th scope="col" height="22">Tax Type</th>
+            <th scope="col" height="22">Tax %</th>
+            <th scope="col" height="22" style="width: 3rem"></th>
+  
+          </tr>
+  
+        </thead>
+  
+        <tbody>
+          <template for:each={listOfItems} for:item="item">
+            <tr key={item.index} class="slds-hint-parent">
+  
+  
+               <td>
+                <lightning-record-edit-form
+                  record-id={item.Invoice__c}
+                  object-api-name="InvoiceLineItem__c"
+                  density="comfy"
+                >
+                <lightning-input-field label="Invoice" data-id={item.index} field-name="Invoice__c" name="Invoice__c" value={item.Invoice__c} onchange={handleInputChange}></lightning-input-field>
+                </lightning-record-edit-form>
+              </td>
+              <td>
+                <lightning-input type="text" variant="label-hidden" label="" data-id={item.index} name="Description__c" value={item.Description__c} onchange={handleInputChange}></lightning-input>
+              </td>
+  
+              <td>
+                <lightning-input type="number" variant="label-hidden" label="" data-id={item.index} name="Quantity__c" value={item.Quantity__c} onchange={handleInputChange}></lightning-input>
+              </td>
+  
+              <td>
+                <lightning-input type="number" variant="label-hidden" label="" data-id={item.index} name="Amount__c" value={item.Amount__c} onchange={handleInputChange}></lightning-input>
+              </td>
+  
+              <td>
+                <lightning-combobox
+                    options={picklistValues}
+                  ></lightning-combobox>
+              </td>
+              <td>
+                <lightning-input type="number" variant="label-hidden" label="" data-id={item.index} name="Tax__c" value={item.Tax__c} onchange={handleInputChange}></lightning-input>
+              </td>
+  
+              <td>
+                <lightning-button-icon icon-name="utility:delete" alternative-text="Remove" title="Remove" name={item.index} onclick={removeRow}></lightning-button-icon>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+      <div class="slds-clearfix">
+        <div class="slds-float_right">
+       <!-- <lightning-button class="slds-p-right_small" variant="destructive" label="Delete All Lines" title="Delete All Lines" icon-name="utility:recycle_bin_full" onclick={removeAllRows}></lightning-button>  -->
+       <lightning-button icon-name="utility:save" variant="brand" label="Save Line Items" title="Save Line Items" onclick={createInvoiceLineItems} disabled={disableLineItem} ></lightning-button>
+        <lightning-button variant="neutral" label="Add more Items" title="Add more Items" icon-name="utility:add" onclick={addNewRow} style="padding-right:10px"></lightning-button>
+      </div>
+    </div>
+    </div>
+  </template>

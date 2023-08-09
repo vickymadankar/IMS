@@ -1,0 +1,6 @@
+table.tblColPad th{background:#ececec;}
+table.tblColPad th, table.tblColPad td {padding:5px !important;}
+
+th, td {
+    border-color: #96D4D4;
+  }

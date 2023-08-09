@@ -1,0 +1,13 @@
+
+<template>
+    <lightning-card>
+        <lightning-icon icon-name="custom:custom62" size="small"></lightning-icon> Invoice List
+        <lightning-datatable 
+        data={invoiceData} 
+        columns={columnTable} 
+        key-field="Id" 
+        hide-checkbox-column="true"
+        onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </lightning-card>
+</template>
